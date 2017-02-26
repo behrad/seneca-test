@@ -3,6 +3,8 @@ const Seneca = require('seneca')
 const myIp = require('./localAddress')[0]
 const IP = process.env.IP || myIp
 
+const action = process.argv[2] || 'myService'
+
 const seneca = Seneca(/*{transport: {host: IP}}*/)
 
 seneca
@@ -17,16 +19,16 @@ seneca
     }
   })
 
-  .use('consul-registry', {
-    host: '10.10.151.27'
-  })
+  // .use('consul-registry', {
+  //   host: '10.10.151.27'
+  // })
 
   .ready( function () {
     console.log('Client is Ready')
 
     seneca.act(
       {
-        action: 'myService',
+        action: action,
         name: 'behrad_test',
         default$: {name: 'behrad'}
       },
