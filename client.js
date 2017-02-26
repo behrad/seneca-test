@@ -9,6 +9,10 @@ const seneca = Seneca(/*{transport: {host: IP}}*/)
 
 seneca
 
+  // .use('consul-registry', {
+  //   host: '10.10.151.27'
+  // })
+
   .use('mesh', {
     bases: [IP+':40000'],
     host: myIp,
@@ -18,10 +22,6 @@ seneca
       }
     }
   })
-
-  // .use('consul-registry', {
-  //   host: '10.10.151.27'
-  // })
 
   .ready( function () {
     console.log('Client is Ready')

@@ -14,24 +14,24 @@ seneca
     })
   })
 
-  .use('mesh', {
-    isbase: true,
-    listen: [{
-      pin: 'action:test',
-      host: myIp
-    }],
-    port: 40000,
-    host: myIp,
-    // auto: true,
-    // discover: {
-    //   multicast: {
-    //     active: false
-    //   }
-    // }
-  })
-
   // .use('consul-registry', {
   //   host: '10.10.151.27'
   // })
+
+  .use('mesh', {
+    isbase: true,
+    // listen: [{
+    //   pin: 'action:test',
+    //   host: myIp
+    // }],
+    port: 40000,
+    host: myIp,
+    auto: true,
+    discover: {
+      multicast: {
+        active: false
+      }
+    }
+  })
 
   .ready( () => console.log('Base is Ready'))

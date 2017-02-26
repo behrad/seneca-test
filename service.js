@@ -14,23 +14,23 @@ seneca
     })
   })
 
+  // .use('consul-registry', {
+  //   host: '10.10.151.27'
+  // })
+
   .use('mesh', {
+    bases: [IP+':40000'],
     listen: [{
       pin: 'action:myService',
       host: myIp
     }],
-    bases: [IP+':40000'],
     host: myIp,
-    // auto: true,
-    // discover: {
-    //   multicast: {
-    //     active: false
-    //   }
-    // }
+    auto: true,
+    discover: {
+      multicast: {
+        active: false
+      }
+    }
   })
-
-  // .use('consul-registry', {
-  //   host: '10.10.151.27'
-  // })
 
   .ready( () => console.log('myService is Ready'))
