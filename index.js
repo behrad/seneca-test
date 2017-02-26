@@ -1,0 +1,1 @@
+console.log(`Seneca Micro-services Test `)
