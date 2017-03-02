@@ -13,7 +13,7 @@ A very simple Seneca mesh micro-services setup to evaluate operational concepts.
 ### Run
 
 ```
-node base.js
+port=40000 node base.js 
 node service.js
 node client.js
 ```

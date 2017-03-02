@@ -1,7 +1,7 @@
 const Seneca = require('seneca')
 
 const myIp = require('./localAddress')[0]
-// const IP = process.env.IP || myIp
+const port = Number(process.env.port) || 40000
 
 const seneca = Seneca(/*{transport: {host: myIp}}*/)
 
@@ -24,7 +24,7 @@ seneca
     //   pin: 'action:test',
     //   host: myIp
     // }],
-    port: 40000,
+    port: port,
     host: myIp,
     auto: true,
     discover: {
