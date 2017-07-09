@@ -1,4 +1,5 @@
 const Seneca = require('seneca')
+const bench = require('fastbench')
 
 const myIp = require('./localAddress')[0]
 const IP = process.env.IP || myIp
@@ -26,18 +27,23 @@ seneca
   .ready( function () {
     console.log('Client is Ready')
 
-    seneca.act(
-      {
-        action: action,
-        name: 'behrad_test',
-        default$: {name: 'behrad'}
-      },
-      function (err, msg) {
-        if(err) {
-          console.error(`Error calling action ${err}`)
-        } else {
-          console.log(`Action back to client with ${msg.alert}`)
-        }
-        this.close()
-      })
+    function call (cb) {
+      seneca.act(
+        {
+          action: action,
+          name: 'behrad_test',
+          default$: {name: 'behrad'}
+        },
+        function (err, msg) {
+          if(err) {
+            console.error(`Error calling action ${err}`)
+          } else {
+            // console.log(`Action back to client with ${msg.alert}`)
+          }
+          cb()
+          // this.close()
+        })
+    }
+
+    bench([call], 1)()
   })

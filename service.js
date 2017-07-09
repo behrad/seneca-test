@@ -9,9 +9,7 @@ seneca
 
   .add('action:myService', function(msg, done) {
     console.log(`myService Action ${JSON.stringify(msg)}`)
-    done(null, {
-      alert: 'myService finished'
-    })
+    done(null, {alert: 'myService finished'})
   })
 
   // .use('consul-registry', {

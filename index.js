@@ -1,1 +1,1 @@
-console.log(`Seneca Micro-services Test `)
+console.log(`Seneca Micro-services Test`)
